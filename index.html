@@ -53,8 +53,15 @@
       line-height:1.7;
     }
 
+    .contador{
+      margin:20px 0;
+      font-size:1rem;
+      color:#7c3aed;
+      font-style:italic;
+    }
+
     button{
-      margin-top:20px;
+      margin-top:10px;
       padding:10px 18px;
       border:1px solid #7c3aed;
       background:transparent;
@@ -94,10 +101,9 @@
   <div class="card">
 
     <div class="status">
-      ⚠️ Estamos trabajando en la página… si algo se ve raro es culpa del amor y no del código
+      ⚠️ seguimos trabajando en la página… si algo se ve raro, es porque estamos enamorados y eso complica el código
     </div>
 
-    <!-- FOTO -->
     <img src="foto.jpeg">
 
     <h1>Para vos</h1>
@@ -105,10 +111,14 @@
     <p>
       No sé bien cómo decir esto en una página,<br><br>
 
-      pero hoy hace un año que todo se siente distinto.<br><br>
+      pero hoy hace un tiempo que todo se siente distinto.<br><br>
 
       Gracias por este tiempo. De verdad.
     </p>
+
+    <div class="contador" id="contador">
+      cargando tiempo juntos...
+    </div>
 
     <button onclick="mostrarMensaje()">
       leer
@@ -128,6 +138,38 @@
     function mostrarMensaje(){
       document.getElementById("mensaje").classList.add("mostrar");
     }
+
+    // 🔥 CONTADOR DE TIEMPO JUNTOS
+    const inicio = new Date("2025-05-26"); // <- CAMBIÁ ESTA FECHA
+
+    function actualizarContador(){
+      const ahora = new Date();
+
+      let diff = ahora - inicio;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const años = Math.floor(dias / 365);
+      const meses = Math.floor((dias % 365) / 30);
+      const diasRestantes = (dias % 365) % 30;
+
+      let texto = "";
+
+      if(años > 0){
+        texto += años + " año" + (años > 1 ? "s " : " ");
+      }
+
+      if(meses > 0){
+        texto += meses + " mes" + (meses > 1 ? "es " : " ");
+      }
+
+      texto += diasRestantes + " día" + (diasRestantes !== 1 ? "s" : "");
+
+      document.getElementById("contador").innerText =
+        "❤️ " + texto + " juntos";
+    }
+
+    actualizarContador();
+    setInterval(actualizarContador, 1000 * 60 * 60);
   </script>
 
 </body>
