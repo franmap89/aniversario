@@ -1,203 +1,260 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para vos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para vos</title>
 
-  <style>
-    body{
-      margin:0;
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background: linear-gradient(135deg, #f6f1ee, #f3e8ff);
-      font-family: Georgia, "Times New Roman", serif;
-      color:#2b2b2b;
-    }
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg, #f6f1ee, #f3e8ff);
+  font-family: Georgia, "Times New Roman", serif;
+  color:#2b2b2b;
+  overflow:hidden;
+}
 
-    .card{
-      width:90%;
-      max-width:600px;
-      background:#fffaf7;
-      padding:40px;
-      border-radius:14px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-      text-align:center;
-      border-top:6px solid #a78bfa;
-    }
+/* fondo difuminado romántico */
+.bg-glow{
+  position:absolute;
+  width:600px;
+  height:600px;
+  background: radial-gradient(circle, #a78bfa55, transparent 70%);
+  filter: blur(60px);
+  top:-100px;
+  left:-100px;
+  z-index:0;
+}
 
-    .status{
-      font-size:0.85rem;
-      color:#7c3aed;
-      margin-bottom:15px;
-      font-style:italic;
-    }
+/* tarjeta */
+.card{
+  position:relative;
+  z-index:1;
+  width:90%;
+  max-width:600px;
+  background:#fffaf7;
+  padding:40px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  text-align:center;
+  border-top:6px solid #a78bfa;
+}
 
-    img{
-      width:200px;
-      border-radius:10px;
-      margin-bottom:20px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.1);
-    }
+.status{
+  font-size:0.85rem;
+  color:#7c3aed;
+  margin-bottom:15px;
+  font-style:italic;
+}
 
-    h1{
-      font-size:2.2rem;
-      margin-bottom:10px;
-      font-weight:normal;
-    }
+img{
+  width:200px;
+  border-radius:10px;
+  margin-bottom:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
 
-    p{
-      font-size:1.1rem;
-      line-height:1.7;
-    }
+h1{
+  font-size:2.2rem;
+  margin-bottom:10px;
+  font-weight:normal;
+}
 
-    .contador{
-      margin:20px 0;
-      font-size:1rem;
-      color:#7c3aed;
-      font-style:italic;
-    }
+p{
+  font-size:1.1rem;
+  line-height:1.7;
+}
 
-    button{
-      margin-top:10px;
-      padding:10px 18px;
-      border:1px solid #7c3aed;
-      background:transparent;
-      cursor:pointer;
-      font-family:inherit;
-      color:#7c3aed;
-      transition:0.2s;
-      border-radius:6px;
-    }
+.contador{
+  margin:20px 0;
+  font-size:1rem;
+  color:#7c3aed;
+  font-style:italic;
+}
 
-    button:hover{
-      background:#7c3aed;
-      color:white;
-    }
+button{
+  margin-top:10px;
+  padding:10px 18px;
+  border:1px solid #7c3aed;
+  background:transparent;
+  cursor:pointer;
+  font-family:inherit;
+  color:#7c3aed;
+  transition:0.2s;
+  border-radius:6px;
+}
 
-    .mensaje{
-      margin-top:20px;
-      opacity:0;
-      transition:0.6s;
-      font-style:italic;
-    }
+button:hover{
+  background:#7c3aed;
+  color:white;
+}
 
-    .mostrar{
-      opacity:1;
-    }
+/* música bloque */
+.music{
+  margin-top:20px;
+  display:none;
+  animation: fade 1s ease;
+}
 
-    .footer{
-      margin-top:25px;
-      font-size:0.8rem;
-      color:#777;
-    }
-  </style>
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* vinilo */
+.vinyl{
+  width:120px;
+  height:120px;
+  margin:0 auto 15px;
+  border-radius:50%;
+  background: radial-gradient(circle, #111 40%, #333 41%, #111 60%);
+  animation: spin 4s linear infinite;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
+/* mensaje */
+.mensaje{
+  margin-top:20px;
+  opacity:0;
+  transition:0.6s;
+  font-style:italic;
+}
+
+.mostrar{
+  opacity:1;
+}
+
+.footer{
+  margin-top:25px;
+  font-size:0.8rem;
+  color:#777;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card">
+<div class="bg-glow"></div>
 
-    <div class="status">
-      ⚠️ seguimos trabajando en la página… si algo se ve raro, es porque estamos enamorados y eso complica el código
+<div class="card">
+
+  <div class="status">
+    ⚠️ seguimos trabajando en la página… si algo se ve raro es porque estamos enamorados y el código no coopera
+  </div>
+
+  <img src="foto.jpg">
+
+  <h1>Para vos</h1>
+
+  <p>
+    No sé bien cómo decir esto en una página,<br><br>
+    pero hoy hace un tiempo que todo se siente distinto.<br><br>
+    Gracias por este año.
+  </p>
+
+  <div class="contador" id="contador"></div>
+
+  <button onclick="mostrarMensaje()">leer</button>
+
+  <div class="mensaje" id="mensaje">
+    me gustás más de lo que sé explicar.
+  </div>
+
+  <br>
+
+  <button onclick="activarMusica()">poner música</button>
+
+  <div class="music" id="music">
+
+    <div class="vinyl"></div>
+
+    <div style="font-size:0.9rem; color:#7c3aed; margin-bottom:10px;">
+      🎧 música que me hace pensar en vos
     </div>
 
-    <img src="foto.jpeg">
-
-    <h1>Para vos</h1>
-
-    <p>
-      No sé bien cómo decir esto en una página,<br><br>
-
-      pero hoy hace un tiempo que todo se siente distinto.<br><br>
-
-      Gracias por este tiempo. De verdad.
-    </p>
-
-    <div class="contador" id="contador">
-      cargando tiempo juntos...
-    </div>
-
-    <button onclick="mostrarMensaje()">
-      leer
-    </button>
-
-    <div class="mensaje" id="mensaje">
-      me gustás más de lo que sé explicar.
-    </div>
-
-    <div class="footer">
-      hecho con un poco de código y bastante cariño
-    </div>
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/playlist/06FppdSL1EIczcMdqk9HQS?utm_source=generator"
+      width="100%"
+      height="152"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
 
   </div>
 
-  <script>
-  // 📅 fecha de inicio
-  const inicio = new Date("2025-05-26T00:00:00");
+  <div class="footer">
+    hecho con un poco de código y bastante cariño
+  </div>
 
-  function actualizarContador(){
-    const ahora = new Date();
-    let diff = ahora - inicio;
+</div>
 
-    const segundos = Math.floor(diff / 1000);
-    const minutos = Math.floor(segundos / 60);
-    const horas = Math.floor(minutos / 60);
-    const dias = Math.floor(horas / 24);
+<script>
+const inicio = new Date("2025-05-26T00:00:00");
 
-    const años = Math.floor(dias / 365);
-    const meses = Math.floor((dias % 365) / 30);
-    const diasRestantes = (dias % 365) % 30;
+function actualizarContador(){
+  const ahora = new Date();
+  let diff = ahora - inicio;
 
-    const horasRestantes = horas % 24;
-    const minutosRestantes = minutos % 60;
-    const segundosRestantes = segundos % 60;
+  const segundos = Math.floor(diff / 1000);
+  const minutos = Math.floor(segundos / 60);
+  const horas = Math.floor(minutos / 60);
+  const dias = Math.floor(horas / 24);
 
-    let texto = "❤️ ";
+  const años = Math.floor(dias / 365);
+  const meses = Math.floor((dias % 365) / 30);
+  const diasRestantes = (dias % 365) % 30;
 
-    if(años > 0){
-      texto += años + " año" + (años > 1 ? "s " : " ");
-    }
+  const horasRestantes = horas % 24;
+  const minutosRestantes = minutos % 60;
+  const segundosRestantes = segundos % 60;
 
-    if(meses > 0){
-      texto += meses + " mes" + (meses > 1 ? "es " : " ");
-    }
+  let texto = "❤️ ";
 
-    texto += diasRestantes + " día" + (diasRestantes !== 1 ? "s " : " ");
-    texto += horasRestantes + "h ";
-    texto += minutosRestantes + "m ";
-    texto += segundosRestantes + "s";
+  if(años > 0) texto += años + "a ";
+  if(meses > 0) texto += meses + "m ";
 
-    document.getElementById("contador").innerText = texto;
+  texto += diasRestantes + "d ";
+  texto += horasRestantes + "h ";
+  texto += minutosRestantes + "m ";
+  texto += segundosRestantes + "s";
+
+  document.getElementById("contador").innerText = texto;
+}
+
+setInterval(actualizarContador, 1000);
+actualizarContador();
+
+function mostrarMensaje(){
+  document.getElementById("mensaje").classList.add("mostrar");
+}
+
+/* 🎧 música manual */
+function activarMusica(){
+  document.getElementById("music").style.display = "block";
+}
+
+/* 🌙 modo noche automático + música automática */
+function modoNoche(){
+  const hora = new Date().getHours();
+  const esNoche = hora >= 19 || hora <= 6;
+
+  if(esNoche){
+    document.getElementById("music").style.display = "block";
   }
+}
 
-  setInterval(actualizarContador, 1000);
-  actualizarContador();
-
-  function mostrarMensaje(){
-    document.getElementById("mensaje").classList.add("mostrar");
-  }
-
-  // 🌙 modo noche automático
-  function modoNoche(){
-    const hora = new Date().getHours();
-    const esNoche = hora >= 19 || hora <= 6;
-
-    if(esNoche){
-      document.body.style.background = "#1b1026";
-      document.querySelector(".card").style.background = "#2a1b3d";
-      document.querySelector(".card").style.color = "#f3e8ff";
-      document.querySelector(".status").style.color = "#c084fc";
-      document.querySelector(".contador").style.color = "#c084fc";
-      document.querySelector("button").style.color = "#c084fc";
-      document.querySelector("button").style.borderColor = "#c084fc";
-    }
-  }
-  
-
-  modoNoche();
+modoNoche();
 </script>
+
 </body>
 </html>
