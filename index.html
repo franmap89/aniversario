@@ -135,42 +135,69 @@
   </div>
 
   <script>
-    function mostrarMensaje(){
-      document.getElementById("mensaje").classList.add("mostrar");
+  // 📅 fecha de inicio
+  const inicio = new Date("2025-05-26T00:00:00");
+
+  function actualizarContador(){
+    const ahora = new Date();
+    let diff = ahora - inicio;
+
+    const segundos = Math.floor(diff / 1000);
+    const minutos = Math.floor(segundos / 60);
+    const horas = Math.floor(minutos / 60);
+    const dias = Math.floor(horas / 24);
+
+    const años = Math.floor(dias / 365);
+    const meses = Math.floor((dias % 365) / 30);
+    const diasRestantes = (dias % 365) % 30;
+
+    const horasRestantes = horas % 24;
+    const minutosRestantes = minutos % 60;
+    const segundosRestantes = segundos % 60;
+
+    let texto = "❤️ ";
+
+    if(años > 0){
+      texto += años + " año" + (años > 1 ? "s " : " ");
     }
 
-    // 🔥 CONTADOR DE TIEMPO JUNTOS
-    const inicio = new Date("2025-05-26"); // <- CAMBIÁ ESTA FECHA
-
-    function actualizarContador(){
-      const ahora = new Date();
-
-      let diff = ahora - inicio;
-
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const años = Math.floor(dias / 365);
-      const meses = Math.floor((dias % 365) / 30);
-      const diasRestantes = (dias % 365) % 30;
-
-      let texto = "";
-
-      if(años > 0){
-        texto += años + " año" + (años > 1 ? "s " : " ");
-      }
-
-      if(meses > 0){
-        texto += meses + " mes" + (meses > 1 ? "es " : " ");
-      }
-
-      texto += diasRestantes + " día" + (diasRestantes !== 1 ? "s" : "");
-
-      document.getElementById("contador").innerText =
-        "❤️ " + texto + " juntos";
+    if(meses > 0){
+      texto += meses + " mes" + (meses > 1 ? "es " : " ");
     }
 
-    actualizarContador();
-    setInterval(actualizarContador, 1000 * 60 * 60);
-  </script>
+    texto += diasRestantes + " día" + (diasRestantes !== 1 ? "s " : " ");
+    texto += horasRestantes + "h ";
+    texto += minutosRestantes + "m ";
+    texto += segundosRestantes + "s";
 
+    document.getElementById("contador").innerText = texto;
+  }
+
+  setInterval(actualizarContador, 1000);
+  actualizarContador();
+
+  function mostrarMensaje(){
+    document.getElementById("mensaje").classList.add("mostrar");
+  }
+
+  // 🌙 modo noche automático
+  function modoNoche(){
+    const hora = new Date().getHours();
+    const esNoche = hora >= 19 || hora <= 6;
+
+    if(esNoche){
+      document.body.style.background = "#1b1026";
+      document.querySelector(".card").style.background = "#2a1b3d";
+      document.querySelector(".card").style.color = "#f3e8ff";
+      document.querySelector(".status").style.color = "#c084fc";
+      document.querySelector(".contador").style.color = "#c084fc";
+      document.querySelector("button").style.color = "#c084fc";
+      document.querySelector("button").style.borderColor = "#c084fc";
+    }
+  }
+  
+
+  modoNoche();
+</script>
 </body>
 </html>
