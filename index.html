@@ -3,108 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para vos ❤️</title>
+  <title>Para vos</title>
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
     body{
+      margin:0;
       height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
-      font-family:Arial, sans-serif;
-      background: linear-gradient(-45deg, #ff758c, #ff7eb3, #7afcff, #feff9c);
-      background-size:400% 400%;
-      animation:bg 12s ease infinite;
-      overflow:hidden;
-    }
-
-    @keyframes bg{
-      0%{background-position:0% 50%;}
-      50%{background-position:100% 50%;}
-      100%{background-position:0% 50%;}
+      background: linear-gradient(135deg, #f6f1ee, #f3e8ff);
+      font-family: Georgia, "Times New Roman", serif;
+      color:#2b2b2b;
     }
 
     .card{
       width:90%;
       max-width:600px;
+      background:#fffaf7;
       padding:40px;
-      border-radius:30px;
-      background:rgba(255,255,255,0.15);
-      backdrop-filter: blur(15px);
+      border-radius:14px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
       text-align:center;
-      color:white;
-      box-shadow:0 8px 40px rgba(0,0,0,0.2);
-      animation:fade 2s ease;
+      border-top:6px solid #a78bfa;
     }
 
-    @keyframes fade{
-      from{
-        opacity:0;
-        transform:translateY(20px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+    .status{
+      font-size:0.85rem;
+      color:#7c3aed;
+      margin-bottom:15px;
+      font-style:italic;
     }
 
     img{
-      width:220px;
-      border-radius:20px;
+      width:200px;
+      border-radius:10px;
       margin-bottom:20px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.3);
+      box-shadow:0 6px 18px rgba(0,0,0,0.1);
     }
 
     h1{
-      font-size:3rem;
-      margin-bottom:15px;
+      font-size:2.2rem;
+      margin-bottom:10px;
+      font-weight:normal;
     }
 
     p{
-      font-size:1.2rem;
+      font-size:1.1rem;
       line-height:1.7;
     }
 
-    .heart{
-      font-size:4rem;
-      animation:pulse 1.5s infinite;
-      margin-bottom:15px;
-    }
-
-    @keyframes pulse{
-      0%{transform:scale(1);}
-      50%{transform:scale(1.15);}
-      100%{transform:scale(1);}
-    }
-
     button{
-      margin-top:25px;
-      padding:14px 24px;
-      border:none;
-      border-radius:15px;
-      font-size:1rem;
+      margin-top:20px;
+      padding:10px 18px;
+      border:1px solid #7c3aed;
+      background:transparent;
       cursor:pointer;
-      background:white;
-      color:#ff4f81;
-      font-weight:bold;
-      transition:0.3s;
+      font-family:inherit;
+      color:#7c3aed;
+      transition:0.2s;
+      border-radius:6px;
     }
 
     button:hover{
-      transform:scale(1.05);
+      background:#7c3aed;
+      color:white;
     }
 
     .mensaje{
       margin-top:20px;
-      font-size:1.1rem;
       opacity:0;
-      transition:1s;
+      transition:0.6s;
+      font-style:italic;
     }
 
     .mostrar{
@@ -113,8 +83,8 @@
 
     .footer{
       margin-top:25px;
-      opacity:0.8;
-      font-size:0.9rem;
+      font-size:0.8rem;
+      color:#777;
     }
   </style>
 </head>
@@ -123,40 +93,40 @@
 
   <div class="card">
 
-    <div class="heart">❤️</div>
+    <div class="status">
+      ⚠️ Estamos trabajando en la página… si algo se ve raro es culpa del amor y no del código
+    </div>
 
-    <!-- CAMBIAR FOTO -->
-    <img src="foto.jpg">
+    <!-- FOTO -->
+    <img src="foto.jpeg">
 
-    <h1>Feliz primer año</h1>
+    <h1>Para vos</h1>
 
     <p>
-      Estamos construyendo algo especial...
-      <br><br>
-      Porque vos te convertiste en mi lugar favorito del mundo.
+      No sé bien cómo decir esto en una página,<br><br>
+
+      pero hoy hace un año que todo se siente distinto.<br><br>
+
+      Gracias por este tiempo. De verdad.
     </p>
 
     <button onclick="mostrarMensaje()">
-      Abrir mensaje
+      leer
     </button>
 
     <div class="mensaje" id="mensaje">
-      Gracias por este año increíble ✨<br>
-      Y por todos los que todavía nos faltan.
+      me gustás más de lo que sé explicar.
     </div>
 
     <div class="footer">
-      Hecho con muchísimo amor 💙
+      hecho con un poco de código y bastante cariño
     </div>
 
   </div>
 
   <script>
     function mostrarMensaje(){
-      document
-        .getElementById("mensaje")
-        .classList
-        .add("mostrar");
+      document.getElementById("mensaje").classList.add("mostrar");
     }
   </script>
 
